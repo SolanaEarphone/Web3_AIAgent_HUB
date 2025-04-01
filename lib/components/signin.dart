@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../utils/bluetooth_service.dart';
 
+/// A widget that displays the sign in page
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
