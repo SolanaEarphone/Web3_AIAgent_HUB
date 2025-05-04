@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'components/main_screen.dart';
-import 'components/signin.dart';
-import 'components/signup.dart';
+import 'config/app_config.dart';
+import 'core/routes/app_router.dart';
+import 'core/state/app_state.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +14,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Solana Earphone',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple), useMaterial3: true),
-      initialRoute: '/signin',
-      routes: {'/signin': (context) => const SignInPage(), '/signup': (context) => const SignUpPage(), '/home': (context) => const MainScreen()},
+    return ChangeNotifierProvider(
+      create: (_) => AppState(),
+      child: MaterialApp(title: AppConfig.appName, theme: AppConfig.lightTheme, initialRoute: AppConfig.initialRoute, onGenerateRoute: AppRouter.generateRoute),
     );
   }
 }
